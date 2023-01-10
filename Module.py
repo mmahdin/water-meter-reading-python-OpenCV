@@ -857,11 +857,11 @@ def train3():
     # my_list = list()
     # folder_path = r'C:\Users\User\Desktop\project2\train'
 
-    print('load data and train ...')
+     
 
     # for i in tqdm(range(11)):
     #     my_list.append(os.listdir(folder_path + '\\' + str(i)))
-    #
+    
     # i = 0
     # for list_ in my_list:
     #     for imPath in tqdm(list_):
@@ -869,39 +869,44 @@ def train3():
     #         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     #         image_list.append(image)
     #     i += 1
+    
+    
+    # image_list = list()
+    # folder_path = r'C:\Users\User\Desktop\project2\train\true_2'
+    # my_list = os.listdir(folder_path)
 
-    image_list = list()
-    folder_path = r'E:\python code\project21\New folder\project\train\true_2'
-    my_list = os.listdir(folder_path)
+    # for imPath in tqdm(my_list):
+    #     image = cv2.imread(f'{folder_path}/{imPath}')
+    #     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    #     image_list.append(image)
 
-    for imPath in tqdm(my_list):
-        image = cv2.imread(f'{folder_path}/{imPath}')
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        image_list.append(image)
+    # folder_path = r'C:\Users\User\Desktop\project2\train\10'
+    # my_list = os.listdir(folder_path)
 
-    folder_path = r'E:\python code\project21\New folder\project\train\10'
-    my_list = os.listdir(folder_path)
-
-    for imPath in tqdm(my_list):
-        image = cv2.imread(f'{folder_path}/{imPath}')
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        image_list.append(image)
+    # for imPath in tqdm(my_list):
+    #     image = cv2.imread(f'{folder_path}/{imPath}')
+    #     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    #     image_list.append(image)
 
     # creat train array
-    train = np.array(image_list[0].reshape(-1, 400)).astype(np.float32)
-    for i in tqdm(range(1, 1796)):
-        train = np.concatenate((train, image_list[i].reshape(-1, 400)), axis=0).astype(np.float32)
+
+    # train = np.array(image_list[0].reshape(-1, 400)).astype(np.float32)
+    # for i in tqdm(range(1, 1821)):
+    #     train = np.concatenate((train, image_list[i].reshape(-1, 400)), axis=0).astype(np.float32)
+    train = cv2.imread(r'C:\Users\User\Desktop\project2\train\traindata.png').astype(np.float32)
+    train = cv2.cvtColor(train, cv2.COLOR_BGR2GRAY)
 
     # creat label for answer
-    # k1 = np.arange(10)
-    # k2 = np.array([10])
-    #
-    # label = np.concatenate(
-    #     (k1.repeat(100)[:, np.newaxis].astype(np.float32), k2.repeat(821)[:, np.newaxis].astype(np.float32)))
-    k1 = np.array([1])
-    k2 = np.array([0])
+    k1 = np.arange(10)
+    k2 = np.array([10])
+    
     label = np.concatenate(
-        (k1.repeat(975)[:, np.newaxis].astype(np.float32), k2.repeat(821)[:, np.newaxis].astype(np.float32)))
+        (k1.repeat(100)[:, np.newaxis].astype(np.float32), k2.repeat(821)[:, np.newaxis].astype(np.float32)))
+
+    # k1 = np.array([1])
+    # k2 = np.array([0])
+    # label = np.concatenate(
+    #     (k1.repeat(975)[:, np.newaxis].astype(np.float32), k2.repeat(821)[:, np.newaxis].astype(np.float32)))
 
     # implement
     x_train, x_test, y_train, y_test = train_test_split(train, label.ravel(),
