@@ -1,7 +1,7 @@
 # Water-meter-reading-python-OpenCV
 algorithm for reading (splitting) numbers on water meter using ml and image processing.
 
-* Use `train Data.png` to train model. this image is composed of 1821 image with size 20x20.
+* Use `trainData.png` to train model. this image is composed of 1821 image with size 20x20.
 
 ## Result
 > ![image](https://user-images.githubusercontent.com/82968741/211611942-600aeeb5-748b-473a-ac46-62fddc8b3b1b.png)
